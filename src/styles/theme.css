@@ -1,0 +1,239 @@
+@import '@fontsource-variable/jetbrains-mono';
+@import '@chirag127/oz-tokens-base/contract.css';
+@import '@chirag127/oz-tokens-base/base.css';
+@import '@chirag127/oz-chrome/styles.css';
+
+/* ============================================================
+   oriz-dev — TERMINAL / TUI identity
+   True-black, phosphor-green, one hot magenta accent.
+   Pure monospace. Boxed ASCII panels. Blinking cursor.
+   Bespoke look; shares only the --oz-* contract mechanism.
+   ============================================================ */
+:root {
+  color-scheme: dark;
+
+  /* signature palette */
+  --term-black: #050706;
+  --term-panel: #0a0f0c;
+  --term-panel-2: #0d1410;
+  --phosphor: #38f8a0;      /* phosphor green — primary */
+  --phosphor-dim: #1f9c63;
+  --hot: #ff2e88;           /* hot magenta — single accent */
+  --amber: #ffcf4d;         /* warnings */
+  --ink: #c6f7dd;
+  --ink-mute: #5f8f76;
+  --rule: #163024;
+
+  /* --- oz-* contract overrides (bespoke look) --- */
+  --oz-bg: var(--term-black);
+  --oz-fg: var(--ink);
+  --oz-surface: var(--term-panel);
+  --oz-muted: var(--ink-mute);
+  --oz-border: var(--rule);
+  --oz-accent: var(--phosphor);
+  --oz-accent-fg: var(--term-black);
+
+  /* oz-chrome consumes these aliases */
+  --oz-paper: var(--term-black);
+  --oz-paper-2: var(--term-panel);
+  --oz-ink: var(--ink);
+  --oz-ink-mute: var(--ink-mute);
+  --oz-rule: var(--rule);
+  --oz-header-h: 3.25rem;
+  --oz-container: 78rem;
+  --oz-text-lg: 1.15rem;
+  --oz-text-md: 0.95rem;
+  --oz-text-sm: 0.8rem;
+  --oz-space-5: 1.25rem;
+
+  /* pure mono type stack */
+  --oz-font-display: 'JetBrains Mono Variable', ui-monospace, monospace;
+  --oz-font-body: 'JetBrains Mono Variable', ui-monospace, monospace;
+  --oz-font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
+}
+
+html { scrollbar-color: var(--phosphor-dim) var(--term-black); }
+
+body {
+  background:
+    radial-gradient(120% 90% at 50% -10%, #06110b 0%, var(--term-black) 55%),
+    var(--term-black);
+  color: var(--ink);
+  font-family: var(--oz-font-mono);
+  min-height: 100vh;
+  /* faint scanline texture — signature terminal feel */
+  background-image:
+    radial-gradient(120% 90% at 50% -10%, #06110b 0%, var(--term-black) 55%),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(56, 248, 160, 0.025) 0px,
+      rgba(56, 248, 160, 0.025) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+}
+
+::selection { background: var(--hot); color: #fff; }
+
+.oz-wordmark { text-shadow: 0 0 12px rgba(56, 248, 160, 0.35); }
+
+/* ---------- blinking cursor (signature motion element) ---------- */
+.cursor::after {
+  content: '_';
+  color: var(--phosphor);
+  animation: blink 1.05s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .cursor::after { animation: none; }
+}
+
+/* ---------- boxed ASCII panel ---------- */
+.panel {
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--term-panel);
+  position: relative;
+  box-shadow: inset 0 0 0 1px rgba(56, 248, 160, 0.04), 0 0 24px rgba(0, 0, 0, 0.5);
+}
+.panel__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink-mute);
+  font-size: 0.78rem;
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+  background: var(--term-panel-2);
+}
+.panel__bar b { color: var(--phosphor); font-weight: 600; }
+.panel__body { padding: 0.9rem; }
+
+/* dots on a panel titlebar */
+.dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+.dot--r { background: var(--hot); }
+.dot--y { background: var(--amber); }
+.dot--g { background: var(--phosphor); }
+
+/* ---------- textareas / inputs — terminal fields ---------- */
+.field {
+  width: 100%;
+  background: var(--term-black);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 0.6rem 0.7rem;
+  font-family: var(--oz-font-mono);
+  font-size: 0.86rem;
+  line-height: 1.55;
+  resize: vertical;
+  caret-color: var(--phosphor);
+}
+.field:focus-visible {
+  outline: none;
+  border-color: var(--phosphor);
+  box-shadow: 0 0 0 1px var(--phosphor), 0 0 14px rgba(56, 248, 160, 0.25);
+}
+textarea.field { min-height: 12rem; }
+
+.label {
+  display: block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-mute);
+  margin-bottom: 0.35rem;
+}
+
+/* ---------- buttons ---------- */
+.btn {
+  font-family: var(--oz-font-mono);
+  font-size: 0.8rem;
+  background: transparent;
+  color: var(--phosphor);
+  border: 1px solid var(--phosphor-dim);
+  border-radius: 3px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  transition: background var(--oz-dur-fast) ease, color var(--oz-dur-fast) ease,
+    box-shadow var(--oz-dur-fast) ease;
+}
+.btn::before { content: '> '; color: var(--ink-mute); }
+.btn:hover {
+  background: var(--phosphor);
+  color: var(--term-black);
+  box-shadow: 0 0 14px rgba(56, 248, 160, 0.4);
+}
+.btn:hover::before { color: var(--term-black); }
+.btn--hot { color: var(--hot); border-color: var(--hot); }
+.btn--hot:hover { background: var(--hot); color: #fff; box-shadow: 0 0 14px rgba(255, 46, 136, 0.45); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* ---------- tab strip (tiling-WM tool switcher) ---------- */
+.tabstrip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 3px;
+  background: var(--term-panel);
+}
+.tab {
+  font-family: var(--oz-font-mono);
+  font-size: 0.8rem;
+  background: transparent;
+  color: var(--ink-mute);
+  border: 1px solid transparent;
+  border-radius: 2px;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.tab:hover { color: var(--ink); background: var(--term-panel-2); }
+.tab[aria-selected='true'] {
+  color: var(--term-black);
+  background: var(--phosphor);
+  box-shadow: 0 0 10px rgba(56, 248, 160, 0.35);
+}
+.tab .key { color: inherit; opacity: 0.55; margin-right: 0.4rem; }
+
+/* ---------- output / status ---------- */
+.out {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.err { color: var(--hot); }
+.ok { color: var(--phosphor); }
+.muted { color: var(--ink-mute); }
+
+.status {
+  font-size: 0.75rem;
+  color: var(--ink-mute);
+  border-top: 1px solid var(--rule);
+  padding: 0.4rem 0.75rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* diff rows */
+.diff-add { background: rgba(56, 248, 160, 0.1); color: var(--phosphor); display: block; }
+.diff-del { background: rgba(255, 46, 136, 0.12); color: var(--hot); display: block; }
+.diff-eq { color: var(--ink-mute); display: block; }
+
+/* regex highlight */
+.hl { background: var(--hot); color: #fff; border-radius: 2px; }
+
+/* layout helpers */
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+@media (max-width: 720px) { .grid2 { grid-template-columns: 1fr; } }
+.row { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+.stack { display: flex; flex-direction: column; gap: 0.75rem; }
+
+.dragover { outline: 2px dashed var(--phosphor); outline-offset: -6px; }

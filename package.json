@@ -1,0 +1,38 @@
+{
+  "name": "oriz-dev",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "deploy": "astro build && wrangler pages deploy dist --project-name oriz-dev --branch main --commit-dirty=true"
+  },
+  "dependencies": {
+    "@astrojs/react": "^5.0.5",
+    "@astrojs/sitemap": "^3.2.0",
+    "@chirag127/oz-ai": "file:../design-system/packages/oz-ai",
+    "@chirag127/oz-chrome": "file:../design-system/packages/oz-chrome",
+    "@chirag127/oz-file": "file:../design-system/packages/oz-file",
+    "@chirag127/oz-tokens-base": "file:../design-system/packages/oz-tokens-base",
+    "@fontsource-variable/jetbrains-mono": "^5.2.5",
+    "@tailwindcss/vite": "^4.3.1",
+    "astro": "^6.4.8",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "tailwindcss": "^4.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "vitest": "^3.2.4",
+    "wrangler": "^4.102.0"
+  }
+}

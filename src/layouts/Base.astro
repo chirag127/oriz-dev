@@ -29,6 +29,14 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href
     <meta property="og:url" content={canonical} />
     <meta name="twitter:card" content="summary" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <script>
+      import { registerSW } from 'virtual:pwa-register'
+      registerSW({ immediate: true })
+    </script>
   </head>
   <body>
     <slot />

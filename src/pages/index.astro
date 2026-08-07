@@ -2,19 +2,6 @@
 import Base from '../layouts/Base.astro'
 import OzToolShell from '@chirag127/oz-chrome/components/OzToolShell.astro'
 import Workbench from '../components/Workbench.tsx'
-
-const tools = [
-  ['json', 'format · validate · minify'],
-  ['base64', 'utf-8 safe encode / decode'],
-  ['jwt', 'decode header + payload, exp check'],
-  ['url', 'encode / decode components'],
-  ['uuid', 'crypto v4, bulk generate'],
-  ['time', 'epoch ⇄ iso ⇄ local, live clock'],
-  ['cron', 'explain schedule in english'],
-  ['hash', 'sha-1/256/384/512, text or file'],
-  ['diff', 'line-level LCS diff'],
-  ['regex', 'live tester + AI generate'],
-]
 ---
 
 <Base>
@@ -32,20 +19,13 @@ const tools = [
         </div>
         <div class="panel__body">
           <h1 style="font-size:1.6rem; margin:0 0 .4rem; color:var(--phosphor); text-shadow:0 0 14px rgba(56,248,160,.3);">
-            developer multitool<span class="cursor"></span>
+            free developer multitool<span class="cursor"></span>
           </h1>
-          <p class="out muted" style="margin:0 0 .75rem; max-width:60ch;">
-            Ten dev tools, one terminal. JSON, base64, JWT, URL, UUID, time, cron, hash, diff, regex.
-            Everything runs <span class="ok">in your browser</span> — nothing is ever uploaded.
-            Big libs load only when you use them; AI is optional polish over <span class="ok">g4f</span> with provider failover.
+          <p class="out muted" style="margin:0; max-width:62ch;">
+            Ten dev tools in one terminal — JSON, base64, JWT, URL, UUID, time, cron, hash, diff, regex.
+            Runs <span class="ok">100% in your browser</span>: no upload, no signup. Optional AI polish over
+            <span class="ok">g4f</span> with provider failover. Pick a tab below to start.
           </p>
-          <div class="row">
-            {tools.map(([t, d]) => (
-              <span class="muted" style="font-size:.72rem; border:1px solid var(--rule); border-radius:3px; padding:.15rem .45rem;">
-                <b style="color:var(--phosphor);">{t}</b> · {d}
-              </span>
-            ))}
-          </div>
         </div>
       </div>
 

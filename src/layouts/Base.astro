@@ -7,10 +7,21 @@ interface Props {
   description?: string
 }
 const {
-  title = 'oriz·dev — developer multitool',
-  description = 'A keyboard-first terminal for developers: JSON format/validate, base64, JWT decode, URL encode, UUID, timestamp, cron explainer, hash, diff, regex tester. 100% client-side — no upload, no signup.',
+  title = 'oriz·dev — free online developer multitool (no signup)',
+  description = 'Free developer multitool: JSON format/validate, base64, JWT decode, URL encode, UUID, timestamp, cron explainer, hash, diff, regex tester — 100% in your browser, no upload, no signup.',
 } = Astro.props as Props
 const canonical = new URL(Astro.url.pathname, Astro.site).href
+const ogImage = new URL('/icons/icon-512.png', Astro.site).href
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'oriz·dev developer multitool',
+  applicationCategory: 'DeveloperApplication',
+  operatingSystem: 'Web',
+  url: 'https://dev.oriz.in',
+  description,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+}
 ---
 
 <!doctype html>
@@ -27,8 +38,14 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="oriz·dev" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
     <meta name="generator" content={Astro.generator} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="apple-touch-icon" href="/icons/icon-192.png" />
     <meta name="apple-mobile-web-app-capable" content="yes" />

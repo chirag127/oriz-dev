@@ -1,0 +1,104 @@
+# oriz·dev — developer multitool
+
+**Live app:** https://dev.oriz.in
+**Source:** https://github.com/chirag127/oriz-dev
+**License:** MIT © 2026 Chirag Singhal
+
+A keyboard-first terminal for everyday dev chores. Ten tools, one page, zero servers.
+
+100% client-side. No upload. No signup. No API key. Every byte you paste stays in your browser tab.
+
+---
+
+## Hero
+
+free developer multitool
+
+Ten dev tools in one terminal — JSON, base64, JWT, URL, UUID, time, cron, hash, diff, regex. Runs 100% in your browser: no upload, no signup. Optional AI polish over g4f with provider failover. Pick a tab to start. Press 0–9 to switch tools.
+
+---
+
+## Tools
+
+### 1. JSON
+Format, validate, and minify JSON. Uses the browser's native `JSON.parse` / `JSON.stringify`. Format pretty-prints with 2-space indent; minify strips all whitespace. Parse errors are shown verbatim with the exact position.
+
+### 2. Base64
+UTF-8-safe encode and decode. Handles multibyte characters correctly (native `btoa` is latin1-only) by round-tripping through `TextEncoder`/`TextDecoder`. Decode reports invalid base64 clearly.
+
+### 3. JWT
+Decode a JSON Web Token: splits the three dot-separated segments, base64url-decodes the header and payload, and pretty-prints both as JSON. Reads the `exp` claim and reports whether the token is expired or valid-until an ISO timestamp. The signature is displayed but never verified or sent anywhere — no secret leaves the tab.
+
+### 4. URL
+Encode and decode URI components via `encodeURIComponent` / `decodeURIComponent`. Malformed sequences surface a clear error.
+
+### 5. UUID
+Generate cryptographically random v4 UUIDs with `crypto.randomUUID()`. Bulk-generate up to 1000 at once.
+
+### 6. Timestamp
+Convert between epoch (seconds or milliseconds, auto-detected by digit count), ISO 8601, UTC string, and local time. Shows a live clock and human relative time ("in 3 hours", "2 days ago") via `Intl.RelativeTimeFormat`. Also parses arbitrary date/time strings via `Date.parse`.
+
+### 7. Cron
+Explain a standard 5-field cron schedule (minute, hour, day-of-month, month, day-of-week) in plain English.
+
+### 8. Hash
+Compute SHA-1, SHA-256, SHA-384, and SHA-512 digests over pasted text or a dropped file, using the Web Crypto `crypto.subtle` API. File hashing runs entirely in-browser — the file is never uploaded.
+
+### 9. Diff
+Line-level diff of two text blocks using a longest-common-subsequence (LCS) algorithm. Marks each line equal / added / removed and shows +/- stats.
+
+### 0. Regex
+Live regular-expression tester: enter a pattern and flags, see all matches with their index, positional capture groups, and named groups, plus in-text highlighting. Global flag is added automatically. Also generates a regex from a plain-English description via the optional AI.
+
+---
+
+## AI (optional polish)
+
+AI features are optional and additive. They can explain a regex, a JWT payload, or a cron expression in plain English, and generate a regex from a description. Powered by the shared `@chirag127/oz-ai` package, which wraps g4f / gpt4free with multi-provider failover and requires no API key. If every provider is down, the core tools still work — AI is never required for any tool.
+
+---
+
+## Privacy
+
+Nothing is uploaded. All parsing, hashing, and diffing runs locally with native browser APIs: `JSON.parse`, `atob`/`btoa`, `TextEncoder`, `crypto.subtle`, `crypto.randomUUID`, `Intl`, and `RegExp`. Heavy code paths lazy-load only when a tool is first used. There is no account, no cookie wall, no server round-trip for the core tools.
+
+---
+
+## How to use
+
+- Open https://dev.oriz.in.
+- Press a number key 0–9 to switch to that tool, or click its tab.
+- Paste or type input; output updates live.
+- For AI features (regex explain/generate, JWT/cron explain), click the AI action — it runs over g4f with no key.
+- Installable as a PWA (Progressive Web App) from a supporting browser for offline-capable, app-like use.
+
+---
+
+## FAQ
+
+**Is my data sent anywhere?** No. Every core tool runs with native browser APIs inside your tab. Files dropped for hashing are never uploaded.
+
+**Do I need to sign up or pay?** No. It is free, requires no signup, and has no API key.
+
+**Does the JWT tool verify signatures?** No. It decodes header/payload and checks expiry only. It never sends the token or any secret.
+
+**What if the AI is down?** Every core tool works without AI. AI is optional polish only.
+
+**Can I install it?** Yes — it is a PWA and can be installed from browsers that support it.
+
+---
+
+## Tech stack
+
+- Static Astro site with small React 19 islands.
+- Tailwind CSS v4.
+- Shared `@chirag127/oz-*` design packages (oz-tokens-base, oz-chrome, oz-file, oz-ai).
+- Optional AI via `@chirag127/oz-ai` → g4f / gpt4free, multi-provider failover, no key.
+- PWA via `@vite-pwa/astro`.
+- Hosted on Cloudflare Pages. Source at https://github.com/chirag127/oriz-dev.
+
+---
+
+## License
+
+MIT © 2026 Chirag Singhal.

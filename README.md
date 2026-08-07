@@ -1,10 +1,12 @@
 # oriz·dev — developer multitool
 
-**Live:** https://dev.oriz.in
+**Live app:** https://dev.oriz.in
+**About / info:** https://chirag127.github.io/oriz-dev/
+**llms.txt:** https://dev.oriz.in/llms.txt
 
 A keyboard-first **terminal** for everyday dev chores. Ten tools, one page, zero servers.
 
-> **100% client-side. No upload. No signup. No key.** Every byte you paste stays in your browser tab.
+> **100% client-side. No upload. No signup. No key. Free.** Every byte you paste stays in your browser tab.
 
 ## Tools
 
@@ -33,7 +35,7 @@ Nothing is uploaded. All parsing, hashing, and diffing runs locally with native 
 
 ## Stack
 
-Static **Astro** + small **React 19** islands, **Tailwind v4**, shared `@chirag127/oz-*` design packages. Hosted on Cloudflare Pages.
+Static **Astro** + small **React 19** islands, **Tailwind v4**, shared `@chirag127/oz-*` design packages, PWA-installable. Live app on Cloudflare Pages; this info page on GitHub Pages.
 
 ## Develop
 

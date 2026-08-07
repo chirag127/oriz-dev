@@ -1,0 +1,30 @@
+# oriz·dev — developer multitool
+
+> Keyboard-first developer multitool. Ten dev tools in one terminal-styled page: JSON, base64, JWT, URL, UUID, timestamp, cron, hash, diff, regex. 100% client-side — no upload, no signup, no API key. Optional AI polish via g4f (gpt4free) with provider failover. Static Astro + React 19, Tailwind v4, PWA-installable, hosted on Cloudflare Pages.
+
+## Live app
+
+- [dev.oriz.in](https://dev.oriz.in): the tool itself — press 0–9 to switch tools.
+
+## Tools
+
+- [JSON](https://dev.oriz.in): format, validate, minify via native `JSON.parse`.
+- [Base64](https://dev.oriz.in): UTF-8-safe encode / decode.
+- [JWT](https://dev.oriz.in): decode header + payload, expiry check — signature secret never sent.
+- [URL](https://dev.oriz.in): encode / decode URI components.
+- [UUID](https://dev.oriz.in): crypto v4, bulk generate.
+- [Timestamp](https://dev.oriz.in): epoch ⇄ ISO ⇄ local, live clock, relative time.
+- [Cron](https://dev.oriz.in): explain a 5-field cron schedule in plain English.
+- [Hash](https://dev.oriz.in): SHA-1/256/384/512 over text or a dropped file via `crypto.subtle`.
+- [Diff](https://dev.oriz.in): line-level LCS diff with +/- stats.
+- [Regex](https://dev.oriz.in): live tester (matches, groups, highlight) + AI-generate from a description.
+
+## AI (optional)
+
+- [AI polish](https://dev.oriz.in): explain a regex / JWT payload / cron expression, or generate a regex from plain English — powered by [@chirag127/oz-ai](https://github.com/chirag127/design-system) wrapping g4f/gpt4free with multi-provider failover, no key. Core tools work with AI fully offline.
+
+## Meta
+
+- [Source (GitHub)](https://github.com/chirag127/oriz-dev): MIT-licensed.
+- [About / info page](https://chirag127.github.io/oriz-dev/): what the project is.
+- [Full LLM text](https://dev.oriz.in/llms-full.txt): complete site content as markdown.

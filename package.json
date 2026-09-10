@@ -24,7 +24,7 @@
     "@chirag127/oz-tokens-base": "file:../design-system/packages/oz-tokens-base",
     "@fontsource-variable/jetbrains-mono": "^5.2.5",
     "@tailwindcss/vite": "^4.3.1",
-    "astro": "^6.4.8",
+    "astro": "^7.2.8",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "tailwindcss": "^4.3.1"

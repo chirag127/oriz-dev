@@ -15,25 +15,25 @@
     "deploy": "astro build && wrangler pages deploy dist --project-name oriz-dev --branch main --commit-dirty=true"
   },
   "dependencies": {
-    "@astrojs/react": "^5.0.5",
-    "@astrojs/sitemap": "^3.2.0",
-    "@vite-pwa/astro": "^1.2.0",
+    "@astrojs/react": "^7.1.2",
+    "@astrojs/sitemap": "^3.7.4",
+    "@vite-pwa/astro": "^2.0.0",
     "@chirag127/oz-ai": "file:../design-system/packages/oz-ai",
     "@chirag127/oz-chrome": "file:../design-system/packages/oz-chrome",
     "@chirag127/oz-file": "file:../design-system/packages/oz-file",
     "@chirag127/oz-tokens-base": "file:../design-system/packages/oz-tokens-base",
     "@fontsource-variable/jetbrains-mono": "^5.2.5",
     "@tailwindcss/vite": "^4.3.1",
-    "astro": "^6.4.8",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
+    "astro": "^7.4.4",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "tailwindcss": "^4.3.1"
   },
   "devDependencies": {
-    "@types/node": "^26.1.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "vitest": "^3.2.4",
-    "wrangler": "^4.102.0"
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "vitest": "^5.0.5",
+    "wrangler": "^4.156.0"
   }
 }

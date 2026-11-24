@@ -1,7 +1,7 @@
 // @ts-check
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
-import AstroPWA from '@vite-pwa/astro'
+import { AstroPWAIntegration } from '@vite-pwa/astro'
 import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'astro/config'
 
@@ -13,7 +13,7 @@ export default defineConfig({
   integrations: [
     react(),
     sitemap(),
-    AstroPWA({
+    AstroPWAIntegration({
       registerType: 'autoUpdate',
       injectRegister: false,
       includeAssets: ['favicon.svg', 'icons/*.png', 'icons/*.svg'],
@@ -57,7 +57,7 @@ export default defineConfig({
           },
         ],
       },
-      workbox: {
+      generateSW: {
         globPatterns: ['**/*.{js,css,html,svg,png,ico,webp,woff,woff2}'],
         navigateFallback: '/',
         cleanupOutdatedCaches: true,
